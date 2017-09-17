@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">	
+    <title>Sum of Numbers</title>
+    <script>
+        do {
+            var num;
+            do {
+                num = prompt("Enter a number to sum (1-100)");
+            } while (isNaN(num) || num < 1 || num > 100);
+
+            var sum = 0;
+            for (var i = 1; i <= num; i++) {
+                sum += i;
+            }
+
+            alert("The sum of the numbers from 1 through " + num + " is " + sum + ".");
+        } while(prompt("Do another sum? (y for rerun)").toLowerCase() == "y");
+    </script>
+</head>
+<body>
+    <main>
+        <!-- Will show after JavaScript has run -->
+        <h1>Thanks for using the Sum of Numbers application!</h1>
+    </main>
+</body>
+</html>
