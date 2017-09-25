@@ -1,4 +1,7 @@
-var $ = function(id) {return document.getElementById(id);};
+//var $ = function(id) {return document.getElementById(id);};
+function $(id) {
+	return document.getElementById(id);
+}
 
 var bounce;
 var my_canvas;
@@ -118,6 +121,8 @@ function slowClicked() {
 window.onload = function() {
    bounce = -1;
    my_canvas = $("myCanvas").getContext('2d');
+   $("h1").style.color = randomColor();
+   $("h2").style.color = randomColor();
    gradient = randomGradient(my_canvas);
    window.onresize = resize_can;
    resize_can(); 
