@@ -4,7 +4,7 @@ var bounce;
 var my_canvas;
 var gradient;
 var timer;
-var ball_array = new Array();
+var ball_array = [];
 
 function ball(){
 	this.x=Math.random()*my_canvas.canvas.width;
@@ -91,12 +91,9 @@ function randomColor() {
 function randomGradient(ctx) {
 	var color1 = randomColor();
 	var color2 = randomColor();
-	console.log(color1);
-	console.log(color2);
-	var my_gradient = ctx.createLinearGradient(0,0,700,0);
+	var my_gradient = ctx.createLinearGradient(0,0,my_canvas.canvas.width,0);
 	my_gradient.addColorStop(0,color1);
 	my_gradient.addColorStop(1,color2);
-	console.log(my_gradient);
 	return my_gradient;
 }
 
