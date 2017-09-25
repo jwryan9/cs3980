@@ -101,6 +101,7 @@ function randomGradient(ctx) {
 }
 
 function stopClicked() {
+	alert("Stopped");
 	clearInterval(timer);
 }
 
