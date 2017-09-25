@@ -9,7 +9,7 @@ var gradient;
 var timer;
 var ball_array = [];
 
-function ball(){
+function Ball(){
 	this.x=Math.random()*my_canvas.canvas.width;
 	this.y=Math.random()*my_canvas.canvas.height;
 	this.vx = (Math.random()-0.5); //random speed
@@ -59,7 +59,7 @@ function ball_draw(){
 
 function create_balls(){
 	 for(var i=0;i<75;i++){
-		var temp=new ball();
+		var temp=new Ball();
 		ball_array.push(temp);
 	 }
 }
@@ -101,21 +101,22 @@ function randomGradient(ctx) {
 }
 
 function stopClicked() {
-
+	clearInterval(timer);
 }
 
 function fastClicked() {
-
+	clearInterval(timer);
+	timer = setInterval(going, 10);
 }
 
 function normalClicked() {
-
+	clearInterval(timer);
+	timer = setInterval(going, 20);
 }
 
 function slowClicked() {
-	timer = null;
-
-	timer = setInterval(going, 30);
+	clearInterval(timer);
+	timer = setInterval(going, 60);
 }
 
 window.onload = function() {
@@ -127,5 +128,5 @@ window.onload = function() {
    window.onresize = resize_can;
    resize_can(); 
    create_balls();
-   timer = setInterval(going,5);
+   timer = setInterval(going,20);
 };
