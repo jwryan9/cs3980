@@ -96,12 +96,11 @@ function randomGradient(ctx) {
 	var color2 = randomColor();
 	var my_gradient = ctx.createLinearGradient(0,0,my_canvas.canvas.width,0);
 	my_gradient.addColorStop(0,color1);
-	my_gradient.addColorStop(1,color2);
+	my_gradient.addColorStop(1,'white');
 	return my_gradient;
 }
 
 function stopClicked() {
-	alert("Stopped");
 	clearInterval(timer);
 }
 
