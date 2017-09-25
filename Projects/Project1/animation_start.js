@@ -2,13 +2,16 @@ var $ = function(id) {return document.getElementById(id);};
 
 var bounce;
 var my_canvas;
+var gradient;
+var timer;
 var ball_array = new Array();
+
 function ball(){
 	this.x=Math.random()*my_canvas.canvas.width;
 	this.y=Math.random()*my_canvas.canvas.height;
 	this.vx = (Math.random()-0.5); //random speed
 	this.vy = (Math.random()-0.5);
-	this.color = "lightgreen";
+	this.color = gradient;
 	this.radius = 12;
 	this.move=ball_move;
 	this.draw=ball_draw;
@@ -77,20 +80,48 @@ function resize_can(){
 }
 
 function randomColor() {
-	var red = Math.floor((Math.random() * 255) + 1);
-	var green = Math.floor((Math.random() * 255) + 1;
-	var blue = Math.floor((Math.random() * 255) + 1);
-
-	return [red, green, blue];
+	var hexVals = '0123456789ABCDEF';
+	var color = '#';
+	for (var i = 0; i < 6; i++) {
+		color += hexVals[Math.floor(Math.random() * 16)];
+	}
+	return color;
 }
 
-function randomGradient() {
-	randomColor().append()
+function randomGradient(ctx) {
+	var color1 = randomColor();
+	var color2 = randomColor();
+	console.log(color1);
+	console.log(color2);
+	var my_gradient = ctx.createLinearGradient(0,0,700,0);
+	my_gradient.addColorStop(0,color1);
+	my_gradient.addColorStop(1,color2);
+	console.log(my_gradient);
+	return my_gradient;
 }
- 
+
+function stopClicked() {
+
+}
+
+function fastClicked() {
+
+}
+
+function normalClicked() {
+
+}
+
+function slowClicked() {
+	timer = null;
+
+	timer = setInterval(going, 30);
+}
+
 window.onload = function() {
    bounce = -1;
    my_canvas = $("myCanvas").getContext('2d');
+   gradient = randomGradient(my_canvas);
    window.onresize = resize_can;
    resize_can(); 
    create_balls();
