@@ -1,7 +1,8 @@
 $(document).ready(function() {
-    var nightsPattern = /\b[0-9]+\b/;
+    var datePattern = /^\d{2}[/]\d{2}[/]\d{4}$/;
+    var nightsPattern = /\b^\d+\b/;
 	var emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
-    var phonePattern = /\b[0-9]{3}-[0-9]{3}-[0-9]{4}\b/;
+    var phonePattern = /\b^\d{3}-\d{3}-\d{4}\b/;
 
 	$("arrival_date").focus();
 
@@ -22,6 +23,9 @@ $(document).ready(function() {
 
 		if (arrival_date == "") {
 		    $arrival_date.next().text("This field is required.");
+		    isValid = false;
+        } else if (!datePattern.test(arrival_date)) {
+		    $arrival_date.next().text("Date must bein format MM/DD/YYYY.");
 		    isValid = false;
         } else {
 		    $arrival_date.val(arrival_date);
