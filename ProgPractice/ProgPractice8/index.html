@@ -11,11 +11,17 @@
     	$(document).ready(function() {
         	$("#slider").bxSlider({
 			  auto: true,
-			  minSlides: 2,
-			  maxSlides: 2,
 			  slideWidth: 250,
-			  slideMargin: 10
+			  slideMargin: 10,
+              randomStart: true,
+              moveSlides: 1,
+              pause: 3000,
+              captions: true,
+              pager: true,
+              pagerSelector: "#pager",
+              pagerType: 'short'
 			});
+
     	});
     </script>
 </head>
