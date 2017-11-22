@@ -35,17 +35,15 @@ $(document).ready(function() {
             var product = $(this).attr("alt");
             var price = priceMap.get(product);
 
-            total += price;
+            var selection = document.createElement("option");
+            selection.text = price.toFixed(2) + " - " + product;
 
             // add selection to text area and update total
-            $("#order").append('\n' + price + " - " + product);
-
-
+            $("#order").append(selection);
+            total += price;
 
             // display order and total
            $("#total").text("$ " + total.toFixed(2));
-
-
 
             // cancel default event of the clicked link
             evt.preventDefault();
@@ -60,7 +58,10 @@ $(document).ready(function() {
     
     // add click event handler for clear button  
     $("#clear_order").click(function() {
+        total = 0;
+        $("#total").text("");
 
+        $("#order").text("");
     }); // end click
     
 }); // end ready
